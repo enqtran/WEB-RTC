@@ -12317,7 +12317,7 @@ const $ = __webpack_require__(6);
 // //connect socket
 // const socket = io('http://localhost:3000');
 // // const socket = io('https://murmuring-depths-92177.herokuapp.com');
-  
+
 // socket.on('DANH_SACH_ONLINE', data => {
 
 //     $('#div-chat').show();
@@ -12357,10 +12357,9 @@ $.ajax({
         "Authorization": "Basic " + btoa("enqtran:a8a51244-676f-11e7-bc36-8ac1aa05a3c4")
     },
     success: function (res) {
-        console.log('-----------------------customConfig-----------------------');
-        console.log(res.v.iceServers);
-        console.log('----------------------------------------------------------');
-
+        // console.log('-----------------------customConfig-----------------------');
+        // console.log(res.v.iceServers);
+        // console.log('----------------------------------------------------------');
         customConfig = res.v.iceServers;
     }
 });
@@ -12382,16 +12381,16 @@ function playStream(idVideoTag, stream) {
 // openSteam().then( stream => playStream('remoteStream', stream));
 
 // const peer = new Peer({ key: 'lwjd5qra8257b9' });
-const peer = new Peer({ 
-    key: 'peerjs', 
-    host: 'enqtranwebrtc.herokuapp.com', 
-    secure: true, 
-    port: 443, 
-    config: customConfig 
+const peer = new Peer({
+    key: 'peerjs',
+    host: 'enqtranwebrtc.herokuapp.com',
+    secure: true,
+    port: 443,
+    config: customConfig
 });
 
 
-peer.on('open', id => { 
+peer.on('open', id => {
     $('#my-peer').append(id);
     $('#btnSignUp').click(() => {
         const username = $('#txtUsername').val();
@@ -12428,7 +12427,7 @@ peer.on('call', call => {
 
             call.on('stream', remoteStream => {
                 playStream('remoteStream', remoteStream);
-                console.log('remoteStream ', remoteStream);                
+                console.log('remoteStream ', remoteStream);
             });
         });
 });
