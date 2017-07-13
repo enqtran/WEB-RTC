@@ -45,7 +45,7 @@ $.ajax({
     },
     success: function (res) {
         // console.log('-----------------------customConfig-----------------------');
-        // console.log(res.v.iceServers);
+        console.log(JSON.stringify(res.v.iceServers));
         // console.log('----------------------------------------------------------');
         customConfig = res.v.iceServers;
     }
@@ -73,7 +73,7 @@ const peer = new Peer({
     host: 'enqtranwebrtc.herokuapp.com',
     secure: true,
     port: 443,
-    config: customConfig
+    config: { 'iceServers': customConfig }
 });
 
 
