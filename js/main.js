@@ -1,33 +1,33 @@
-//connect socket
+// //connect socket
 // const socket = io('http://localhost:3000');
-const socket = io('https://murmuring-depths-92177.herokuapp.com/');
+// // const socket = io('https://murmuring-depths-92177.herokuapp.com');
   
-socket.on('DANH_SACH_ONLINE', data => {
+// socket.on('DANH_SACH_ONLINE', data => {
 
-    $('#div-chat').show();
-    $('#div-dangky').hide();
+//     $('#div-chat').show();
+//     $('#div-dangky').hide();
 
-    data.forEach(data => {
-        const {username, id } = data;
-        $('#ulUser').append(`<li id="${id}">${username}</li>`);
-    });
+//     data.forEach(data => {
+//         const {username, id } = data;
+//         $('#ulUser').append(`<li id="${id}">${username}</li>`);
+//     });
 
-    socket.on('CO_NGUOI_DUNG_MOI', user => {
-        const {username, id } = user;
-        $('#ulUser').append(`<li id="${id}">${username}</li>`);
-    });
+//     socket.on('CO_NGUOI_DUNG_MOI', user => {
+//         const {username, id } = user;
+//         $('#ulUser').append(`<li id="${id}">${username}</li>`);
+//     });
 
-    socket.on('AI_DO_NGAT_KET_NOI', peerId => {
-        $(`#${peerId}`).remove();
-    });
+//     socket.on('AI_DO_NGAT_KET_NOI', peerId => {
+//         $(`#${peerId}`).remove();
+//     });
 
-});
+// });
 
-socket.on('DANG_KY_THAT_BAI', () => alert('Username da ton tai, hay chon username khac !'));
+// socket.on('DANG_KY_THAT_BAI', () => alert('Username da ton tai, hay chon username khac !'));
 
 
 // register
-$('#div-chat').hide();
+// $('#div-chat').hide();
 
 
 //config TURN SERVER
@@ -119,20 +119,20 @@ peer.on('call', call => {
 
 
 
-$('#ulUser').on('click', 'li', function(){
-    const id = $(this).attr('id');
-    openSteam()
-        .then(stream => {
-            playStream('localStream', stream);
-            console.log('localStream ', stream);
+// $('#ulUser').on('click', 'li', function(){
+//     const id = $(this).attr('id');
+//     openSteam()
+//         .then(stream => {
+//             playStream('localStream', stream);
+//             console.log('localStream ', stream);
 
-            const call = peer.call(id, stream);
-            call.on('stream', remoteStream => {
-                console.log('remoteStream ', remoteStream);
-                playStream('remoteStream', remoteStream);
-            });
-        });
-});
+//             const call = peer.call(id, stream);
+//             call.on('stream', remoteStream => {
+//                 console.log('remoteStream ', remoteStream);
+//                 playStream('remoteStream', remoteStream);
+//             });
+//         });
+// });
 
 
 
