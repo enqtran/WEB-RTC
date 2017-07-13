@@ -1,11 +1,8 @@
-const io = require('socket.io')(3000);
-
+const io = require('socket.io')(process.env.PORT || 3000);
 
 const arrUsername = [];
 
 io.on('connection', socket => {
-    console.log(socket.id);
-
     socket.on('NGUOI_DUNG_DANG_KY', user => {
         const isExist = arrUsername.some(e => e.username === user.username);
 

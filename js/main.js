@@ -1,6 +1,6 @@
 //connect socket
 // const socket = io('http://localhost:3000');
-const socket = io('https://enqtran.github.io');
+const socket = io('https://murmuring-depths-92177.herokuapp.com/');
   
 socket.on('DANH_SACH_ONLINE', data => {
 
