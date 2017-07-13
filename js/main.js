@@ -1,31 +1,55 @@
-// const socket = io('http://localhost:3000');
+//connect socket
+const socket = io('http://localhost:3000');
+  
+socket.on('DANH_SACH_ONLINE', data => {
 
-// $('#div-chat').hide();
+    $('#div-chat').show();
+    $('#div-dangky').hide();
 
-// socket.on('DANH_SACH_ONLINE', data => {
+    data.forEach(data => {
+        const {username, id } = data;
+        $('#ulUser').append(`<li id="${id}">${username}</li>`);
+    });
 
-//     $('#div-chat').show();
-//     $('#div-dangky').hide();
+    socket.on('CO_NGUOI_DUNG_MOI', user => {
+        const {username, id } = user;
+        $('#ulUser').append(`<li id="${id}">${username}</li>`);
+    });
 
-//     data.forEach(data => {
-//         const {username, id } = data;
-//         $('#ulUser').append(`<li id="${id}">${username}</li>`);
-//     });
+    socket.on('AI_DO_NGAT_KET_NOI', peerId => {
+        $(`#${peerId}`).remove();
+    });
 
-//     socket.on('CO_NGUOI_DUNG_MOI', user => {
-//         const {username, id } = user;
-//         $('#ulUser').append(`<li id="${id}">${username}</li>`);
-//     });
+});
 
-//     socket.on('AI_DO_NGAT_KET_NOI', peerId => {
-//         $(`#${peerId}`).remove();
-//     });
-// });
-
-
-// socket.on('DANG_KY_THAT_BAI', () => alert('Username da ton tai, hay chon username khac !'));
+socket.on('DANG_KY_THAT_BAI', () => alert('Username da ton tai, hay chon username khac !'));
 
 
+// register
+$('#div-chat').hide();
+
+
+//config TURN SERVER
+let customConfig;
+
+$.ajax({
+    url: "https://global.xirsys.net/_turn/MyFirstApp/",
+    type: "PUT",
+    async: false,
+    headers: {
+        "Authorization": "Basic " + btoa("enqtran:a8a51244-676f-11e7-bc36-8ac1aa05a3c4")
+    },
+    success: function (res) {
+        console.log('-----------------------customConfig-----------------------');
+        console.log(res.v.iceServers);
+        console.log('----------------------------------------------------------');
+
+        customConfig = res.v.iceServers;
+    }
+});
+
+
+//Function stream
 function openSteam() {
     const config = { audio: false, video: true };
     return navigator.mediaDevices.getUserMedia(config);
@@ -37,12 +61,18 @@ function playStream(idVideoTag, stream) {
     video.play();
 }
 
-//openSteam().then( stream => playStream('localStream', stream));
+// openSteam().then( stream => playStream('localStream', stream));
+// openSteam().then( stream => playStream('remoteStream', stream));
 
-const peer = new Peer({ key: 'lwjd5qra8257b9' });
+// const peer = new Peer({ key: 'lwjd5qra8257b9' });
+const peer = new Peer({ 
+    key: 'peerjs', 
+    host: 'enqtranwebrtc.herokuapp.com', 
+    secure: true, 
+    port: 443, 
+    config: customConfig 
+});
 
-console.log('-----------------peer----------------');
-console.log(peer);
 
 peer.on('open', id => { 
     $('#my-peer').append(id);
@@ -53,19 +83,22 @@ peer.on('open', id => {
 });
 
 
-// Call
+// offer
 $('#btnCall').click(() => {
     const id = $('#remoteId').val();
     openSteam()
         .then(stream => {
             playStream('localStream', stream);
+            console.log('localStream ', stream);
+
             const call = peer.call(id, stream);
-            call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-            
-            console.log('------------------------call-------------------------');
-            console.log(call);
+            call.on('stream', remoteStream => {
+                playStream('remoteStream', remoteStream);
+                console.log('remoteStream ', remoteStream);
+            });
         });
 });
+
 
 
 //answer
@@ -74,30 +107,31 @@ peer.on('call', call => {
         .then(stream => {
             call.answer(stream);
             playStream('localStream', stream);
-            call.on('stream', remoteStream => {
-                console.log(remoteStream);
-                playStream('remoteStream', remoteStream);
-            });
+            console.log('localStream ', stream);
 
-            console.log('------------------------answer-------------------------');
-            console.log(call);
-            
+            call.on('stream', remoteStream => {
+                playStream('remoteStream', remoteStream);
+                console.log('remoteStream ', remoteStream);                
+            });
         });
 });
 
 
 
-// $('#ulUser').on('click', 'li', function(){
-//     const id = $(this).attr('id');
-//     openSteam()
-//         .then(stream => {
-//             console.log(stream);
+$('#ulUser').on('click', 'li', function(){
+    const id = $(this).attr('id');
+    openSteam()
+        .then(stream => {
+            playStream('localStream', stream);
+            console.log('localStream ', stream);
 
-//             playStream('localStream', stream);
-//             const call = peer.call(id, stream);
-//             call.on('stream', remoteStream => playStream('remoteStream', remoteStream));
-//         });
-// });
+            const call = peer.call(id, stream);
+            call.on('stream', remoteStream => {
+                console.log('remoteStream ', remoteStream);
+                playStream('remoteStream', remoteStream);
+            });
+        });
+});
 
 
 
