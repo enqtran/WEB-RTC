@@ -1,3 +1,6 @@
+const Peer = require('peerjs');
+const $ = require('jquery');
+
 // //connect socket
 // const socket = io('http://localhost:3000');
 // // const socket = io('https://murmuring-depths-92177.herokuapp.com');
