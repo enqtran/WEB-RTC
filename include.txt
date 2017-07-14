@@ -1,0 +1,19 @@
+adapter: github.com/webrtc/adapter
+ICE : xirsys.net
+
+
+Nodejs + socketio server
+webRTC client
+
+
+
+W3C Standard           Chrome                   Firefox
+--------------------------------------------------------------
+getUserMedia           webkitGetUserMedia       mozGetUserMedia
+RTCPeerConnection      webkitRTCPeerConnection  RTCPeerConnection
+RTCSessionDescription  RTCSessionDescription    RTCSessionDescription
+RTCIceCandidate        RTCIceCandidate          RTCIceCandidate
+
+
+
+run: webpack -w

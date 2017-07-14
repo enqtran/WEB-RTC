@@ -7,40 +7,79 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>WEB RTC</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<style>
+		#ulUser .act {
+			cursor: pointer;
+		}
+	</style>
 </head>
 
 <body>
 	<div class="container">
 		<div class="row">
+			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<div id="div-chat">
-					<h1 class="text-center">Web RTC</h1>
-					<h3 id="my-peer"></h3>
-					<div class="user">
-						<video id="localStream" width="300" controls></video>
-						<hr>
-						<video id="remoteStream" width="300" controls></video>
-						<hr>
-						<input type="text" id="remoteId" placeholder="Remote ID">
-						<button id="btnCall">Call</button>
+				<h1 class="text-center">Web RTC</h1>
+				<div id="div-dangky" class="form-group">
+					<div class="col-md-10">
+						<input type="text" id="txtUsername" placeholder="Enter your name " class="form-control">
+					</div>
+					<div class="col-md-2">
+						<button id="btnSignUp" class="btn btn-info">Sign Up</button>
 					</div>
 				</div>
-
-				 <!-- <div id="div-dangky">
-					<hr>
-					<input type="text" id="txtUsername" placeholder="Enter your username">
-					<button id="btnSignUp">Sigi Up</button>
-				</div>  -->
 			</div>
-			<div class="col-md-6">
-				 <!-- <div class="user-online">
-					<ul id="ulUser">
+			<div class="col-md-3"></div>
+		</div>
+		<br>
 
-					</ul>
-				</div>  -->
+		<div id="div-chat">
+			<div class="row">
+				<div class="col-md-8">
+					<div>
+						<div class="user">
+							<video id="remoteStream" width="100%" height="300" controls></video>
+							<br>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-8">
+							<input type="text" id="remoteId" class="form-control" placeholder="Remote ID">
+						</div>
+						<div class="col-md-4">
+							<button id="btnCall" class="btn btn-default btn-block">Call</button>
+						</div>
+					</div>
+					<div class="clear-fixed"></div>
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="user-online">
+								<h4>List user online <span class="badge">0</span></h4>
+								<ul id="ulUser" class="list-group">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<video id="localStream" width="100%" controls></video>
+							<h4>Your Peer-Id: <span id="my-peer"></span></h4>
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</div>
 </body>
 <script src="bundle.js"></script>
+
 </html>
