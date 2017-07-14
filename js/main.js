@@ -3,9 +3,8 @@ const $ = require('jquery');
 const io = require('./socket.io');
 
 //connect socket
-// const socket = io('http://localhost:3000');
-const socket = io('https://baroque-croissant-31372.herokuapp.com');
-
+// const socket = io('http://localhost:8888');
+const socket = io('https://socketenqtran-enqtran.c9users.io');
 
 // register
 $('#div-chat').hide();
@@ -14,8 +13,6 @@ socket.on('DANH_SACH_ONLINE', data => {
 
     $('#div-chat').show();
     $('#div-dangky').hide();
-
-    $('.badge').html(data.length);
 
     data.forEach(data => {
         const {username, id } = data;
