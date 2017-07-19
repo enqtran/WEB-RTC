@@ -1,11 +1,10 @@
 adapter: github.com/webrtc/adapter
-ICE : xirsys.net
 
+ICE server : xirsys.net
 
 Nodejs + socketio server
-webRTC client
 
-
+webRTC client 
 
 W3C Standard           Chrome                   Firefox
 --------------------------------------------------------------
