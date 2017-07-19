@@ -60,11 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 9);
-=======
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
->>>>>>> 0a3734383a08a17f70dd67cd69d6fb1092e4add6
 /******/ })
 /************************************************************************/
 /******/ ([
