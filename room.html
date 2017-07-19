@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WEB RTC</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<style>
+		body {
+			background-color: #ccc;
+		}
+
+		#listMessages,
+		#roomListMessages {
+			height: 300px;
+			background: #eee;
+			width: 100%;
+			overflow-x: auto;
+			padding: 10px;
+		}
+
+		#boxContent {
+			background: #eee;
+			margin-top: 27px;
+			padding: 20px;
+		}
+
+		#ulUser .act {
+			cursor: pointer;
+		}
+		#div-chat, #chatForm, #chatRoom {
+			margin-top: 30px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<h1 class="text-center">Web RTC</h1>
+				<div id="div-dangky" class="form-group">
+					<div class="col-md-10">
+						<input type="text" id="txtUsername" placeholder="Enter your name " class="form-control">
+					</div>
+					<div class="col-md-2">
+						<button id="btnSignUp" class="btn btn-info">Sign Up</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+		<div class="clear-fixed"></div>
+
+		<div id="div-chat">
+			<div class="row">
+				<div class="col-md-8">
+					<div>
+						<div class="user">
+							<video id="remoteStream" width="100%" height="300" controls></video>
+							<br>
+							<br>
+							<br>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-8">
+							<input type="text" id="remoteId" class="form-control" placeholder="Remote ID">
+						</div>
+						<div class="col-md-4">
+							<button id="btnCall" class="btn btn-default btn-block">Call</button>
+						</div>
+					</div>
+					<div class="clear-fixed"></div>
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="user-online">
+								<h4>List user online</h4>
+								<ul id="ulUser" class="list-group">
+
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<br>
+					<div class="row">
+						<div class="col-md-12">
+							<video id="localStream" width="100%" controls></video>
+							<h4>Your Peer-Id: <span id="my-peer"></span></h4>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div id="chatForm">
+			<div class="row">
+				<div class="col-md-4">
+					<div id="sayHi">
+						Helle <span id="currentUser">Anh</span>
+						<input type="button" value="Logout" id="btnLogout" />
+					</div>
+
+					<h2>All user</h2>
+					<div id="boxContent">
+
+					</div>
+				</div>
+				<div class="col-md-8">
+
+
+					<div id="listMessages">
+
+					</div>
+
+					<div id="typing"></div>
+					<br>
+					<div class="control">
+						<input type="text" id="txtMessages" />
+						<input type="button" value="Send" id="btnSendMessages" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="chatRoom">
+			<div class="row">
+				<div class="col-md-4">
+					<div id="boxRoom">
+						<input type="text" id="txtRoom" />
+						<input type="button" value="Create Room" id="btnRoom" />
+					</div>
+					<h1>List room</h1>
+					<div id="listRoom"></div>
+
+					<h1>Room hien tai</h1>
+					<div id="roomHienTai">
+
+					</div>
+				</div>
+
+				<div class="col-md-8">
+					<div id="roomListMessages">
+					</div>
+
+					<div class="control">
+						<input type="text" id="txtMessagesRoom" />
+						<input type="button" value="Send" id="btnSendMessagesRoom" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--//chatRoom  -->
+	</div>
+</body>
+<script src="bundle.js"></script>
+
+</html>

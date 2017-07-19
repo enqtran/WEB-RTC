@@ -8,75 +8,178 @@
 	<title>WEB RTC</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<style>
+		body {
+			background-color: #ccc;
+		}
+
+		#listMessages,
+		#roomListMessages {
+			min-height: 400px;
+			background: #eee;
+			width: 100%;
+			overflow-x: auto;
+			padding: 10px;
+		}
+		.curent_messages_user {
+			background: #ccc;
+			padding: 5px 15px;
+			border-radius: 20px;
+			text-align: right;
+			word-wrap: break-word;
+			margin-bottom: 5px;
+		}
+		.other_user {
+			background: #dec2c2;
+			padding: 5px 15px;
+			border-radius: 20px;
+			text-align: left;
+			word-wrap: break-word;
+			margin-bottom: 5px;
+		}
+
+		#boxContent {
+			background: #eee;
+			margin-top: 27px;
+			padding: 20px;
+		}
+
 		#ulUser .act {
 			cursor: pointer;
+		}
+
+		#div-chat,
+		#chatForm,
+		#chatRoom {
+			margin-top: 30px;
+		}
+
+		.wrapper {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+
+		.box-control {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+
+		.control-chat .inputs-text {
+			float: left;
+		}
+
+		#txtMessages {
+			padding: 10px 20px;
+			resize: none;
+			width: 90%;
+			font-size: 16px;
+		}
+
+		#btnSendMessages {
+			border-radius: 0;
+			font-size: 40px;
+			width: 10%;
+			padding: 4px;
+		}
+
+		#listMessages {
+			padding-bottom: 20px;
+		}
+
+		#typing {
+			margin-top: -25px;
+			padding-left: 10px;
+		}
+		span#currentUser {
+			font-size: 16px;
+			font-weight: bold;
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
-				<h1 class="text-center">Web RTC</h1>
-				<div id="div-dangky" class="form-group">
-					<div class="col-md-10">
-						<input type="text" id="txtUsername" placeholder="Enter your name " class="form-control">
-					</div>
-					<div class="col-md-2">
-						<button id="btnSignUp" class="btn btn-info">Sign Up</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3"></div>
-		</div>
-		<br>
+	<div class="wrapper">
+		<div class="login-form">
+			<div class="container">
 
-		<div id="div-chat">
-			<div class="row">
-				<div class="col-md-8">
-					<div>
-						<div class="user">
-							<video id="remoteStream" width="100%" height="300" controls></video>
-							<br>
-							<br>
-							<br>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="row">
-						<div class="col-md-8">
-							<input type="text" id="remoteId" class="form-control" placeholder="Remote ID">
-						</div>
-						<div class="col-md-4">
-							<button id="btnCall" class="btn btn-default btn-block">Call</button>
-						</div>
-					</div>
-					<div class="clear-fixed"></div>
-					<br>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="user-online">
-								<h4>List user online</h4>
-								<ul id="ulUser" class="list-group">
-
-								</ul>
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<h1 class="text-center">Web RTC</h1>
+						<div id="div-dangky" class="form-group">
+							<div class="col-md-10">
+								<input type="text" id="txtUsername" placeholder="Enter your name " class="form-control">
+							</div>
+							<div class="col-md-2">
+								<button id="btnSignUp" class="btn btn-info">Sign Up</button>
 							</div>
 						</div>
 					</div>
-
-					<br>
-					<div class="row">
-						<div class="col-md-12">
-							<video id="localStream" width="100%" controls></video>
-							<h4>Your Peer-Id: <span id="my-peer"></span></h4>
-						</div>
-					</div>
-
+					<div class="col-md-3"></div>
 				</div>
 			</div>
+		</div>
+
+		<div class="webrtc-chat">
+			<div class="container">
+				<div id="div-chat">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="user">
+								<video id="remoteStream" width="100%" height="300" controls></video>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="your-video">
+								<video id="localStream" width="100%" height="300" controls></video>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="profile">
+								<h4>PEER ID: <span id="my-peer"></span></h4>
+								<hr>
+								<div id="sayHi">
+									<div class="text-center"><span id="currentUser"></span></div>
+									<div>
+										<input type="button" value="Logout" class="btn btn-danger btn-block" id="btnLogout" />
+									</div>
+									
+									<!-- <input type="text" id="remoteId" class="form-control" placeholder="Remote ID"> 
+									<button id="btnCall" class="btn btn-default">Call</button>
+									-->
+								</div>
+								<hr>
+								<div class="user-online">
+									<h4>ONLINE</h4>
+									<ul id="ulUser" class="list-group"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="chatForm">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<div id="listMessages"></div>
+							<div id="typing"></div>
+						</div>
+					</div>
+				</div>
+				<!--//chat  -->
+			</div>
+
+			<div class="container-fliud">
+				<div class="box-control">
+					<div class="control-chat">
+						<textarea id="txtMessages" class="inputs-text" rows="2"></textarea>
+						<input type="button" class="btn btn-success inputs-text" value="Send" id="btnSendMessages" />
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </body>
