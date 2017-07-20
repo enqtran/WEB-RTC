@@ -8,6 +8,7 @@
   "dependencies": {
     "jquery": "^3.2.1",
     "peerjs": "^0.3.14",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "webrtc-adapter": "^4.2.0"
   }
 }

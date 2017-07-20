@@ -1,14 +1,17 @@
 const Peer = require('peerjs');
 const $ = require('jquery');
 const io = require('./socket.io');
+const adapter = require('webrtc-adapter');
 
 let user_id = $('#my-peer').val();
+
+console.log('browserDetails = ', adapter.browserDetails.browser);
 
 /**
  * CONNECT SOCKET
  */
-const socket = io('http://localhost:3000');
-// const socket = io('https://socketenqtran-enqtran.c9users.io');
+// const socket = io('http://localhost:3000');
+const socket = io('https://enqtranserversocketio-enqtran.c9users.io/');
 
 // REGISTER
 $('.webrtc-chat').hide();
@@ -59,9 +62,9 @@ socket.on("SERVER_TRA_TIN_NHAN", data_messages => {
     console.log(user_id);
 
     let class_name = (data_messages.peerId == user_id) ? 'curent_messages_user' : 'other_user';
-    let user_name_chat = (data_messages.peerId != user_id) ? data_messages.username : '';
+    let user_name_chat = (data_messages.peerId != user_id) ? data_messages.username+":" : '';
 
-    $('#listMessages').append("<div class='ms "+class_name+"'>" + user_name_chat +" " + data_messages.messages + "</div>");
+    $('#listMessages').append("<div class='ms "+class_name+"'><b>" + user_name_chat +"</b> " + data_messages.messages + "</div>");
     $('#listMessages').animate({
         scrollTop: $('#listMessages').prop("scrollHeight")
     },
@@ -238,12 +241,12 @@ function playStream(idVideoTag, stream) {
 // webrtc Detected Browser: true = chrome, false = firefox
 function webrtc_detected_browser_webkit() {
     if (navigator.webkitGetUserMedia) {
-        console.log("chrome");
+        // console.log("chrome");
         return true;
     }
 
     if (navigator.mozGetUserMedia) {
-        console.log("firefox");
+        // console.log("firefox");
         return false;
     }
 }

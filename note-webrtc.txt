@@ -1,0 +1,81 @@
+WebRTC
+
+- Three main tasks
++ Acquiring audio and video
++ Communicating audio and video
++ Communicating arbitrary data
+
+
+- Three main JavaScript APIs
++ MediaStream (aka getUserMedia)
++ RTCPeerConnection
++ RTCDataChannel
+
+
+- MediaStream
+Represents a stream of audio and/or video
+Can contain multiple 'tracks'
+Obtain a MediaStream with navigator.getUserMedia()
+
+- Constraints
+Controls the contents of the MediaStream
+Media type, resolution, frame rate
+
+
+- RTCPeerConnection does a lot
+Signal processing
+Codec handling
+Peer to peer communication
+Security
+Bandwidth management
+...
+
+
+- RTCDataChannel
+Same API as WebSockets
+Ultra-low latency
+Unreliable or reliable
+Secure
+
+
+- STUN and TURN
+P2P in the age of firewalls and NATs
+
+- STUN
+Tell me what my public IP address is
+Simple server, cheap to run
+Data flows peer-to-peer
+
+
+- TURN
+Provide a cloud fallback if peer-to-peer communication fails
+Data is sent through server, uses server bandwidth
+Ensures the call works in almost all environments
+
+
+
+- ICE
+ICE: a framework for connecting peers
+Tries to find the best path for each call
+Vast majority of calls can use STUN (webrtcstats.com)
+
+
+- Security throughout WebRTC
+Mandatory encryption for media and data
+Secure UI, explicit opt-in
+Sandboxed, no plugins
+WebRTC Security Architecture
+
+
+
+- adapter.js
+Lets you use the same code in all browsers:
+Removes vendor prefixes
+Abstracts Chrome/Firefox differences
+Minimizes effects of spec churn
+
+
+- JavaScript frameworks 
+- PeerJS: Easy peer-to-peer data
+
+

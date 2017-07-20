@@ -20,6 +20,7 @@
 			overflow-x: auto;
 			padding: 10px;
 		}
+
 		.curent_messages_user {
 			background: #ccc;
 			padding: 5px 15px;
@@ -28,6 +29,7 @@
 			word-wrap: break-word;
 			margin-bottom: 5px;
 		}
+
 		.other_user {
 			background: #dec2c2;
 			padding: 5px 15px;
@@ -92,28 +94,49 @@
 			margin-top: -25px;
 			padding-left: 10px;
 		}
+
 		span#currentUser {
 			font-size: 16px;
 			font-weight: bold;
+		}
+
+		@media screen and (max-width: 640px) {
+			#txtMessages {
+				padding: 5px 10px;
+				resize: none;
+				width: 80%;
+				font-size: 15px;
+				height: 45px;
+			}
+			#btnSendMessages {
+				font-size: 25px;
+				width: 20%;
+			}
+			#chatForm {
+				margin-bottom: 100px;
+			}
 		}
 	</style>
 </head>
 
 <body>
 	<div class="wrapper">
+		<h1 class="text-center">Web RTC</h1>
+
 		<div class="login-form">
 			<div class="container">
 
 				<div class="row">
 					<div class="col-md-3"></div>
 					<div class="col-md-6">
-						<h1 class="text-center">Web RTC</h1>
-						<div id="div-dangky" class="form-group">
-							<div class="col-md-10">
-								<input type="text" id="txtUsername" placeholder="Enter your name " class="form-control">
-							</div>
-							<div class="col-md-2">
-								<button id="btnSignUp" class="btn btn-info">Sign Up</button>
+						<div class="row">
+							<div id="div-dangky" class="form-group">
+								<div class="col-md-10 col-xs-8">
+									<input type="text" id="txtUsername" placeholder="Enter your name " class="form-control">
+								</div>
+								<div class="col-md-2 col-xs-2">
+									<button id="btnSignUp" class="btn btn-info">Sign Up</button>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -126,17 +149,17 @@
 			<div class="container">
 				<div id="div-chat">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-6 col-xs-8">
 							<div class="user">
 								<video id="remoteStream" width="100%" height="300" controls></video>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-3 col-xs-4">
 							<div class="your-video">
 								<video id="localStream" width="100%" height="300" controls></video>
 							</div>
 						</div>
-						<div class="col-md-3">
+						<div class="col-md-3 col-xs-12">
 							<div class="profile">
 								<h4>PEER ID: <span id="my-peer"></span></h4>
 								<hr>
@@ -145,7 +168,7 @@
 									<div>
 										<input type="button" value="Logout" class="btn btn-danger btn-block" id="btnLogout" />
 									</div>
-									
+
 									<!-- <input type="text" id="remoteId" class="form-control" placeholder="Remote ID"> 
 									<button id="btnCall" class="btn btn-default">Call</button>
 									-->
