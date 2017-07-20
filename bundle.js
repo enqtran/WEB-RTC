@@ -12379,9 +12379,6 @@ socket.on('AI_DO_NGAT_KET_NOI', peerId => {
  */
 //SHOW MESSAGES ALL
 socket.on("SERVER_TRA_TIN_NHAN", data_messages => {
-    console.log(data_messages);
-    console.log(user_id);
-
     let class_name = (data_messages.peerId == user_id) ? 'curent_messages_user' : 'other_user';
     let user_name_chat = (data_messages.peerId != user_id) ? data_messages.username+":" : '';
 
