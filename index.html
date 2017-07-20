@@ -118,6 +118,21 @@
 			.webrtc-chat{
 				display: none;
 			}
+			#remoteStream {
+				height: 50%;
+			}
+			#localStream {
+				height: 50%;
+			}
+			#chatForm {
+				margin-top: 0px;
+			}
+			#listMessages {
+				min-height: 200px;
+			}
+
+
+
 		}
 	</style>
 </head>
@@ -152,12 +167,12 @@
 			<div class="container">
 				<div id="div-chat">
 					<div class="row">
-						<div class="col-md-6 col-xs-8">
+						<div class="col-md-6 col-xs-6">
 							<div class="user">
 								<video id="remoteStream" width="100%" height="300" controls></video>
 							</div>
 						</div>
-						<div class="col-md-3 col-xs-4">
+						<div class="col-md-3 col-xs-6">
 							<div class="your-video">
 								<video id="localStream" width="100%" height="300" controls></video>
 							</div>
