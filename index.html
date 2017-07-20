@@ -99,6 +99,9 @@
 			font-size: 16px;
 			font-weight: bold;
 		}
+		#menu-mobile {
+			display: none;
+		}
 
 		@media screen and (max-width: 640px) {
 			#txtMessages {
@@ -115,7 +118,7 @@
 			#chatForm {
 				margin-bottom: 100px;
 			}
-			.webrtc-chat{
+			.webrtc-chat {
 				display: none;
 			}
 			#remoteStream {
@@ -124,15 +127,29 @@
 			#localStream {
 				height: 50%;
 			}
-			#chatForm {
-				margin-top: 0px;
-			}
 			#listMessages {
-				min-height: 200px;
+				min-height: 300px;
+				max-height: 400px;
 			}
-
-
-
+			.profile {
+				position: fixed;
+				left: 0;
+				top: 65px;
+				z-index: 9999;
+				background: #fff;
+				width: 100%;
+				padding: 15px;
+				display: none;
+			}
+			#menu-mobile {
+				position: absolute;
+				top: 10px;
+				left: 15px;
+				background: green;
+				padding: 5px 10px;
+				color: #fff;
+				font-size: 15px;
+			}
 		}
 	</style>
 </head>
@@ -140,6 +157,7 @@
 <body>
 	<div class="wrapper">
 		<h1 class="text-center">Web RTC</h1>
+		<button id="menu-mobile"><span class="glyphicon glyphicon-th-list"></span></button>
 
 		<div class="login-form">
 			<div class="container">

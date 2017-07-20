@@ -153,6 +153,8 @@ peer.on('open', id => {
     $('#btnSignUp').click(() => {
         $('.webrtc-chat').show();
         $('.login-form').hide();
+        $('#menu-mobile').show();
+        
         const username = $('#txtUsername').val();
         socket.emit('NGUOI_DUNG_DANG_KY', { username, id });
         //test webcam device
@@ -298,4 +300,8 @@ $('#btnSendMessagesRoom').click(() => {
     }
 });
 
+
 /**************************************************************************************************/
+$('#menu-mobile').click(function(event) {
+    $('.profile').toggle();
+});
