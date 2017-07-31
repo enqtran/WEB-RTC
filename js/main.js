@@ -220,7 +220,7 @@ $('#ulUser').on('click', 'li', function () {
  */
 //getUserMedia stream
 function openSteam() {
-    const config = { audio: true, video: true };
+    const config = { audio: false, video: true };
     return navigator.mediaDevices.getUserMedia(config);
 }
 
