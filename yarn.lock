@@ -133,9 +133,9 @@ isarray@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
 
-jquery@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+jquery@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.0.tgz#8de513fa0fa4b2c7d2e48a530e26f0596936efdf"
 
 js-binarypack@0.0.9:
   version "0.0.9"
@@ -207,6 +207,10 @@ safe-buffer@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
+sdp@^2.1.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/sdp/-/sdp-2.10.0.tgz#643fff1a43cdba54a739c7b202f56bd854474af2"
+
 socket.io-adapter@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-1.1.0.tgz#c7aa46501dd556c2cb8a28af8ff95c0b5e1daa4c"
@@ -262,6 +266,12 @@ ultron@~1.1.0:
 uws@~0.14.4:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/uws/-/uws-0.14.5.tgz#67aaf33c46b2a587a5f6666d00f7691328f149dc"
+
+webrtc-adapter@^4.2.0:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-4.2.2.tgz#17896c047084fd4c567958a0cd4321e17f32773c"
+  dependencies:
+    sdp "^2.1.0"
 
 ws@~2.3.1:
   version "2.3.1"
