@@ -6,7 +6,7 @@
   "author": "enqtran <enqtran@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "peerjs": "^0.3.14",
     "socket.io": "^2.0.3",
     "webrtc-adapter": "^4.2.0"
